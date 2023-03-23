@@ -91,3 +91,5 @@ popd
 
 # 添加额外软件包
 git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
+rm -rf feeds/packages/net/adguardhome
+svn co https://github.com/coolsnowwolf/packages/trunk/net/adguardhome feeds/packages/net/adguardhome
