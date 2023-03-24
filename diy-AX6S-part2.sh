@@ -9,6 +9,19 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
+# 替换luci-app-ttyd相关
+rm -rf feeds/luci/applications/luci-app-ttyd
+svn co https://github.com/openwrt/luci/trunk/applications/luci-app-ttyd feeds/luci/applications/luci-app-ttyd
+
+# 替换luci-app-passwall相关
+rm -rf feeds/luci/applications/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall feeds/luci/applications/luci-app-passwall
+rm -rf feeds/packages/net/haproxy
+svn co https://github.com/immortalwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
+rm -rf feeds/packages/net/brook
+rm -rf feeds/packages/net/trojan-go
+rm -rf feeds/packages/net/trojan-plus
+
 # 替换luci-app-zerotier相关
 rm -rf feeds/luci/applications/luci-app-zerotier
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
@@ -70,6 +83,11 @@ sed -i "/helloworld/d" "feeds.conf.default"
 echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
 ./scripts/feeds update helloworld
 ./scripts/feeds install -a -f -p helloworld
+
+# 添加passwall packages源
+echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> "feeds.conf.default"
+./scripts/feeds update PWpackages
+./scripts/feeds install -a -f -p PWpackages
 
 # 替换默认IP
 sed -i 's#192.168.1.1#192.168.0.1#g' package/base-files/files/bin/config_generate
