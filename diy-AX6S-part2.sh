@@ -69,6 +69,8 @@ rm -rf feeds/packages/net/xray-core
 svn co https://github.com/fw876/helloworld/trunk/xray-core feeds/packages/net/xray-core
 rm -rf feeds/packages/net/xray-plugin
 svn co https://github.com/fw876/helloworld/trunk/xray-plugin feeds/packages/net/xray-plugin
+rm -rf feeds/packages/net/kcptun
+svn co https://github.com/coolsnowwolf/packages/trunk/net/kcptun feeds/packages/net/kcptun
 
 # 替换luci-app-frpc相关
 rm -rf feeds/luci/applications/luci-app-frpc
