@@ -78,7 +78,7 @@ svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frpc fee
 rm -rf feeds/packages/net/frp
 svn co https://github.com/coolsnowwolf/packages/trunk/net/frp feeds/packages/net/frp
 
-git clone https://github.com/kuoruan/openwrt-upx.git package/openwrt-upx
+git clone https://github.com/201821143044/openwrt-upx.git package/openwrt-upx
 
 # 添加helloworld源
 sed -i "/helloworld/d" "feeds.conf.default"
