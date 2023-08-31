@@ -97,7 +97,7 @@ sed -i 's#192.168.1.1#192.168.0.1#g' package/base-files/files/bin/config_generat
 
 # 添加Golang软件包
 rm -rf feeds/packages/lang/golang
-svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+svn co https://github.com/openwrt/packages/branches/master/lang/golang feeds/packages/lang/golang
 
 # 添加aliyundrive-webdav
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav packages/aliyundrive-webdav
