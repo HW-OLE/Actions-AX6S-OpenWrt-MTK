@@ -15,7 +15,7 @@ svn co https://github.com/openwrt/luci/trunk/applications/luci-app-ttyd feeds/lu
 
 # 替换luci-app-passwall相关
 rm -rf feeds/luci/applications/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall feeds/luci/applications/luci-app-passwall
+svn co https://github.com/xiaorouji/openwrt-passwall/branches/main/luci-app-passwall feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/haproxy
 svn co https://github.com/immortalwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
 rm -rf feeds/packages/net/brook
