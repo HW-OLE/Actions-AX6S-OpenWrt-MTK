@@ -21,7 +21,6 @@ svn co https://github.com/immortalwrt/packages/trunk/net/haproxy feeds/packages/
 rm -rf feeds/packages/net/brook
 rm -rf feeds/packages/net/trojan-go
 rm -rf feeds/packages/net/trojan-plus
-git clone https://github.com/xiaorouji/openwrt-passwall-packages package/passwall
 
 # 替换luci-app-zerotier相关
 rm -rf feeds/luci/applications/luci-app-zerotier
@@ -89,7 +88,7 @@ echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf
 ./scripts/feeds install -a -f -p helloworld
 
 # 添加passwall packages源
-echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> "feeds.conf.default"
+echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 ./scripts/feeds update PWpackages
 ./scripts/feeds install -a -f -p PWpackages
 
