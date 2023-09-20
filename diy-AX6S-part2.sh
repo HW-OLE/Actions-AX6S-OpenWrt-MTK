@@ -21,6 +21,7 @@ svn co https://github.com/immortalwrt/packages/trunk/net/haproxy feeds/packages/
 rm -rf feeds/packages/net/brook
 rm -rf feeds/packages/net/trojan-go
 rm -rf feeds/packages/net/trojan-plus
+git clone https://github.com/xiaorouji/openwrt-passwall-packages package/passwall
 
 # 替换luci-app-zerotier相关
 rm -rf feeds/luci/applications/luci-app-zerotier
