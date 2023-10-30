@@ -9,6 +9,11 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
+
+# 替换mosdns相关
+rm -rf feeds/packages/net/mosdns
+svn co https://github.com/coolsnowwolf/packages/trunk/net/mosdns feeds/packages/net/mosdns
+
 # 替换luci-app-ttyd相关
 rm -rf feeds/luci/applications/luci-app-ttyd
 svn co https://github.com/openwrt/luci/trunk/applications/luci-app-ttyd feeds/luci/applications/luci-app-ttyd
