@@ -36,45 +36,45 @@ svn co https://github.com/coolsnowwolf/packages/trunk/net/zerotier feeds/package
 
 # 替换luci-app-ssr-plus相关
 rm -rf feeds/luci/applications/luci-app-ssr-plus
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
+svn co https://github.com/wekingchen/helloworld/trunk/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/packages/net/chinadns-ng
-svn co https://github.com/fw876/helloworld/trunk/chinadns-ng feeds/packages/net/chinadns-ng
+svn co https://github.com/wekingchen/helloworld/trunk/chinadns-ng feeds/packages/net/chinadns-ng
 rm -rf feeds/packages/net/dns2socks
-svn co https://github.com/fw876/helloworld/trunk/dns2socks feeds/packages/net/dns2socks
+svn co https://github.com/wekingchen/helloworld/trunk/dns2socks feeds/packages/net/dns2socks
 rm -rf feeds/packages/net/dns2tcp
-svn co https://github.com/fw876/helloworld/trunk/dns2tcp feeds/packages/net/dns2tcp
+svn co https://github.com/wekingchen/helloworld/trunk/dns2tcp feeds/packages/net/dns2tcp
 rm -rf feeds/packages/net/hysteria
-svn co https://github.com/fw876/helloworld/trunk/hysteria feeds/packages/net/hysteria
+svn co https://github.com/wekingchen/helloworld/trunk/hysteria feeds/packages/net/hysteria
 rm -rf feeds/packages/net/ipt2socks
-svn co https://github.com/fw876/helloworld/trunk/ipt2socks feeds/packages/net/ipt2socks
+svn co https://github.com/wekingchen/helloworld/trunk/ipt2socks feeds/packages/net/ipt2socks
 rm -rf feeds/packages/net/microsocks
-svn co https://github.com/fw876/helloworld/trunk/microsocks feeds/packages/net/microsocks
+svn co https://github.com/wekingchen/helloworld/trunk/microsocks feeds/packages/net/microsocks
 rm -rf feeds/packages/net/naiveproxy
-svn co https://github.com/fw876/helloworld/trunk/naiveproxy feeds/packages/net/naiveproxy
+svn co https://github.com/wekingchen/helloworld/trunk/naiveproxy feeds/packages/net/naiveproxy
 rm -rf feeds/packages/net/redsocks2
-svn co https://github.com/fw876/helloworld/trunk/redsocks2 feeds/packages/net/redsocks2
+svn co https://github.com/wekingchen/helloworld/trunk/redsocks2 feeds/packages/net/redsocks2
 rm -rf feeds/packages/net/shadowsocks-rust
-svn co https://github.com/fw876/helloworld/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
+svn co https://github.com/wekingchen/helloworld/trunk/shadowsocks-rust feeds/packages/net/shadowsocks-rust
 rm -rf feeds/packages/net/shadowsocksr-libev
-svn co https://github.com/fw876/helloworld/trunk/shadowsocksr-libev feeds/packages/net/shadowsocksr-libev
+svn co https://github.com/wekingchen/helloworld/trunk/shadowsocksr-libev feeds/packages/net/shadowsocksr-libev
 rm -rf feeds/packages/net/simple-obfs
-svn co https://github.com/fw876/helloworld/trunk/simple-obfs feeds/packages/net/simple-obfs
+svn co https://github.com/wekingchen/helloworld/trunk/simple-obfs feeds/packages/net/simple-obfs
 rm -rf feeds/packages/net/tcping
-svn co https://github.com/fw876/helloworld/trunk/tcping feeds/packages/net/tcping
+svn co https://github.com/wekingchen/helloworld/trunk/tcping feeds/packages/net/tcping
 rm -rf feeds/packages/net/trojan
-svn co https://github.com/fw876/helloworld/trunk/trojan feeds/packages/net/trojan
+svn co https://github.com/wekingchen/helloworld/trunk/trojan feeds/packages/net/trojan
 rm -rf feeds/packages/net/v2ray-core
-svn co https://github.com/fw876/helloworld/trunk/v2ray-core feeds/packages/net/v2ray-core
+svn co https://github.com/wekingchen/helloworld/trunk/v2ray-core feeds/packages/net/v2ray-core
 rm -rf feeds/packages/net/v2ray-geodata
-svn co https://github.com/fw876/helloworld/trunk/v2ray-geodata feeds/packages/net/v2ray-geodata
+svn co https://github.com/wekingchen/helloworld/trunk/v2ray-geodata feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/v2ray-plugin
-svn co https://github.com/fw876/helloworld/trunk/v2ray-plugin feeds/packages/net/v2ray-plugin
+svn co https://github.com/wekingchen/helloworld/trunk/v2ray-plugin feeds/packages/net/v2ray-plugin
 rm -rf feeds/packages/net/v2raya
-svn co https://github.com/fw876/helloworld/trunk/v2raya feeds/packages/net/v2raya
+svn co https://github.com/wekingchen/helloworld/trunk/v2raya feeds/packages/net/v2raya
 rm -rf feeds/packages/net/xray-core
-svn co https://github.com/fw876/helloworld/trunk/xray-core feeds/packages/net/xray-core
+svn co https://github.com/wekingchen/helloworld/trunk/xray-core feeds/packages/net/xray-core
 rm -rf feeds/packages/net/xray-plugin
-svn co https://github.com/fw876/helloworld/trunk/xray-plugin feeds/packages/net/xray-plugin
+svn co https://github.com/wekingchen/helloworld/trunk/xray-plugin feeds/packages/net/xray-plugin
 rm -rf feeds/packages/net/kcptun
 svn co https://github.com/coolsnowwolf/packages/trunk/net/kcptun feeds/packages/net/kcptun
 
@@ -88,7 +88,7 @@ git clone https://github.com/201821143044/openwrt-upx.git package/openwrt-upx
 
 # 添加helloworld源
 sed -i "/helloworld/d" "feeds.conf.default"
-echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
+echo "src-git helloworld https://github.com/wekingchen/helloworld.git" >> "feeds.conf.default"
 ./scripts/feeds update helloworld
 ./scripts/feeds install -a -f -p helloworld
 
