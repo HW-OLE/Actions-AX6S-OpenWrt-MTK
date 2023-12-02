@@ -46,7 +46,9 @@ svn co https://github.com/fw876/helloworld/branches/main/ipt2socks feeds/package
 rm -rf feeds/packages/net/microsocks
 svn co https://github.com/fw876/helloworld/branches/main/microsocks feeds/packages/net/microsocks
 rm -rf feeds/packages/net/naiveproxy
-svn co https://github.com/fw876/helloworld/branches/main/naiveproxy feeds/packages/net/naiveproxy
+git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
+cp -r openwrt_helloworld/naiveproxy feeds/packages/net
+rm -rf openwrt_helloworld
 rm -rf feeds/packages/net/redsocks2
 svn co https://github.com/fw876/helloworld/branches/main/redsocks2 feeds/packages/net/redsocks2
 rm -rf feeds/packages/net/shadowsocks-rust
