@@ -12,79 +12,69 @@
 
 # 替换luci-app-ttyd相关
 rm -rf feeds/luci/applications/luci-app-ttyd
-svn co https://github.com/openwrt/luci/trunk/applications/luci-app-ttyd feeds/luci/applications/luci-app-ttyd
+git clone https://github.com/openwrt/luci.git luci-repo
+cp -r luci-repo/applications/luci-app-ttyd feeds/luci/applications/luci-app-ttyd
+rm -rf luci-repo
 
 # 替换luci-app-passwall相关
 rm -rf feeds/luci/applications/luci-app-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/trunk/luci-app-passwall feeds/luci/applications/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git passwall-repo
+cp -r passwall-repo/luci-app-passwall feeds/luci/applications/luci-app-passwall
+rm -rf passwall-repo
 rm -rf feeds/packages/net/haproxy
-svn co https://github.com/immortalwrt/packages/trunk/net/haproxy feeds/packages/net/haproxy
+git clone https://github.com/immortalwrt/packages.git immortal-packages
+cp -r immortal-packages/net/haproxy feeds/packages/net/haproxy
+rm -rf immortal-packages
 rm -rf feeds/packages/net/brook
 rm -rf feeds/packages/net/trojan-go
 rm -rf feeds/packages/net/trojan-plus
 
-# 替换luci-app-zerotier相关
-rm -rf feeds/luci/applications/luci-app-zerotier
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-zerotier feeds/luci/applications/luci-app-zerotier
-# git clone --depth=1 https://github.com/zhengmz/luci-app-zerotier.git feeds/luci/applications/luci-app-zerotier
-rm -rf feeds/packages/net/zerotier
-svn co https://github.com/coolsnowwolf/packages/trunk/net/zerotier feeds/packages/net/zerotier
+# 克隆 coolsnowwolf 的 luci 和 packages 仓库
+git clone https://github.com/coolsnowwolf/luci.git coolsnowwolf-luci
+git clone https://github.com/coolsnowwolf/packages.git coolsnowwolf-packages
 
-# 替换luci-app-ssr-plus相关
+# 替换luci-app-zerotier和luci-app-frpc
+rm -rf feeds/luci/applications/{luci-app-zerotier,luci-app-frpc}
+cp -r coolsnowwolf-luci/applications/{luci-app-zerotier,luci-app-frpc} feeds/luci/applications
+
+# 替换zerotier、frp 和kcptun
+rm -rf feeds/packages/net/{zerotier,frp,kcptun}
+cp -r coolsnowwolf-packages/net/{zerotier,frp,kcptun} feeds/packages/net
+
+# 添加 Golang 软件包
+rm -rf feeds/packages/lang/golang
+cp -r coolsnowwolf-packages/lang/golang feeds/packages/lang/golang
+
+# 添加luci-app-adguardhome
+git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
+rm -rf feeds/packages/net/adguardhome
+cp -r coolsnowwolf-packages/net/adguardhome feeds/packages/net/adguardhome
+
+# 删除克隆的 coolsnowwolf-luci 和 coolsnowwolf-packages 仓库
+rm -rf coolsnowwolf-luci
+rm -rf coolsnowwolf-packages
+
+# 克隆 helloworld 仓库
+git clone https://github.com/fw876/helloworld.git
+
+# 替换 helloworld 系列软件包
+PACKAGES="chinadns-ng dns2socks dns2tcp hysteria ipt2socks microsocks redsocks2 shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin shadow-tls mosdns"
+for pkg in $PACKAGES; do
+    rm -rf feeds/packages/net/$pkg
+    cp -r helloworld/$pkg feeds/packages/net/$pkg
+done
+
 rm -rf feeds/luci/applications/luci-app-ssr-plus
-svn co https://github.com/fw876/helloworld/branches/main/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
-rm -rf feeds/packages/net/chinadns-ng
-svn co https://github.com/fw876/helloworld/branches/main/chinadns-ng feeds/packages/net/chinadns-ng
-rm -rf feeds/packages/net/dns2socks
-svn co https://github.com/fw876/helloworld/branches/main/dns2socks feeds/packages/net/dns2socks
-rm -rf feeds/packages/net/dns2tcp
-svn co https://github.com/fw876/helloworld/branches/main/dns2tcp feeds/packages/net/dns2tcp
-rm -rf feeds/packages/net/hysteria
-svn co https://github.com/fw876/helloworld/branches/main/hysteria feeds/packages/net/hysteria
-rm -rf feeds/packages/net/ipt2socks
-svn co https://github.com/fw876/helloworld/branches/main/ipt2socks feeds/packages/net/ipt2socks
-rm -rf feeds/packages/net/microsocks
-svn co https://github.com/fw876/helloworld/branches/main/microsocks feeds/packages/net/microsocks
-rm -rf feeds/packages/net/naiveproxy
+cp -r helloworld/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
+
+# 替换 naiveproxy
 git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
+rm -rf feeds/packages/net/naiveproxy
 cp -r openwrt_helloworld/naiveproxy feeds/packages/net
 rm -rf openwrt_helloworld
-rm -rf feeds/packages/net/redsocks2
-svn co https://github.com/fw876/helloworld/branches/main/redsocks2 feeds/packages/net/redsocks2
-rm -rf feeds/packages/net/shadowsocks-rust
-svn co https://github.com/fw876/helloworld/branches/main/shadowsocks-rust feeds/packages/net/shadowsocks-rust
-rm -rf feeds/packages/net/shadowsocksr-libev
-svn co https://github.com/fw876/helloworld/branches/main/shadowsocksr-libev feeds/packages/net/shadowsocksr-libev
-rm -rf feeds/packages/net/simple-obfs
-svn co https://github.com/fw876/helloworld/branches/main/simple-obfs feeds/packages/net/simple-obfs
-rm -rf feeds/packages/net/tcping
-svn co https://github.com/fw876/helloworld/branches/main/tcping feeds/packages/net/tcping
-rm -rf feeds/packages/net/trojan
-svn co https://github.com/fw876/helloworld/branches/main/trojan feeds/packages/net/trojan
-rm -rf feeds/packages/net/v2ray-core
-svn co https://github.com/fw876/helloworld/branches/main/v2ray-core feeds/packages/net/v2ray-core
-rm -rf feeds/packages/net/v2ray-geodata
-svn co https://github.com/fw876/helloworld/branches/main/v2ray-geodata feeds/packages/net/v2ray-geodata
-rm -rf feeds/packages/net/v2ray-plugin
-svn co https://github.com/fw876/helloworld/branches/main/v2ray-plugin feeds/packages/net/v2ray-plugin
-rm -rf feeds/packages/net/v2raya
-svn co https://github.com/fw876/helloworld/branches/main/v2raya feeds/packages/net/v2raya
-rm -rf feeds/packages/net/xray-core
-svn co https://github.com/fw876/helloworld/branches/main/xray-core feeds/packages/net/xray-core
-rm -rf feeds/packages/net/xray-plugin
-svn co https://github.com/fw876/helloworld/branches/main/xray-plugin feeds/packages/net/xray-plugin
-rm -rf feeds/packages/net/kcptun
-svn co https://github.com/coolsnowwolf/packages/trunk/net/kcptun feeds/packages/net/kcptun
-rm -rf feeds/packages/net/shadow-tls
-svn co https://github.com/fw876/helloworld/branches/main/shadow-tls feeds/packages/net/shadow-tls
-rm -rf feeds/packages/net/mosdns
-svn co https://github.com/fw876/helloworld/branches/main/mosdns feeds/packages/net/mosdns
 
-# 替换luci-app-frpc相关
-rm -rf feeds/luci/applications/luci-app-frpc
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-frpc feeds/luci/applications/luci-app-frpc
-rm -rf feeds/packages/net/frp
-svn co https://github.com/coolsnowwolf/packages/trunk/net/frp feeds/packages/net/frp
+# 删除克隆的 helloworld 仓库
+rm -rf helloworld
 
 git clone https://github.com/201821143044/openwrt-upx.git package/openwrt-upx
 
@@ -102,22 +92,17 @@ echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.
 # 替换默认IP
 sed -i 's#192.168.1.1#192.168.0.1#g' package/base-files/files/bin/config_generate
 
-# 添加Golang软件包
-rm -rf feeds/packages/lang/golang
-svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
-
 # 添加aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav package/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
+git clone https://github.com/messense/aliyundrive-webdav.git messense-aliyundrive-webdav
+cp -r messense-aliyundrive-webdav/openwrt/aliyundrive-webdav package/aliyundrive-webdav
+cp -r messense-aliyundrive-webdav/openwrt/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
+rm -rf messense-aliyundrive-webdav
 
 # 添加luci-app-openclash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone https://github.com/vernesong/OpenClash.git
+cp -r OpenClash/luci-app-openclash package/luci-app-openclash
+rm -rf OpenClash
 # 编译 po2lmo (如果有po2lmo可跳过)
 pushd package/luci-app-openclash/tools/po2lmo
 make && sudo make install
 popd
-
-# 添加额外软件包
-git clone https://github.com/kongfl888/luci-app-adguardhome.git package/luci-app-adguardhome
-rm -rf feeds/packages/net/adguardhome
-svn co https://github.com/coolsnowwolf/packages/trunk/net/adguardhome feeds/packages/net/adguardhome
