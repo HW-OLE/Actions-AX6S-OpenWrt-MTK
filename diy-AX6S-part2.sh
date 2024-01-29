@@ -89,6 +89,9 @@ echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.
 ./scripts/feeds update PWpackages
 ./scripts/feeds install -a -f -p PWpackages
 
+# 去掉libopenssl-legacy依赖
+sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +zlib +libopenssl-legacy/s/ +libopenssl-legacy//' feeds/helloworld/shadowsocksr-libev/Makefile
+
 # 替换默认IP
 sed -i 's#192.168.1.1#192.168.0.1#g' package/base-files/files/bin/config_generate
 
