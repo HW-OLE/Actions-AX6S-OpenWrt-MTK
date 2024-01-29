@@ -64,6 +64,9 @@ for pkg in $PACKAGES; do
     cp -r helloworld/$pkg feeds/packages/net/$pkg
 done
 
+# 去掉libopenssl-legacy依赖
+sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +zlib +libopenssl-legacy/s/ +libopenssl-legacy//' feeds/packages/net/shadowsocksr-libev/Makefile
+
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 cp -r helloworld/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
 
