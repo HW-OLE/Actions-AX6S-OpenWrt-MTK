@@ -58,7 +58,7 @@ rm -rf coolsnowwolf-packages
 git clone https://github.com/fw876/helloworld.git
 
 # 替换 helloworld 系列软件包
-PACKAGES="chinadns-ng dns2socks dns2tcp hysteria ipt2socks microsocks redsocks2 shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin shadow-tls mosdns"
+PACKAGES="chinadns-ng dns2socks dns2tcp hysteria ipt2socks microsocks redsocks2 shadowsocks-rust shadowsocksr-libev simple-obfs tcping trojan v2ray-core v2ray-plugin v2raya xray-core xray-plugin shadow-tls mosdns"
 for pkg in $PACKAGES; do
     rm -rf feeds/packages/net/$pkg
     cp -r helloworld/$pkg feeds/packages/net/$pkg
