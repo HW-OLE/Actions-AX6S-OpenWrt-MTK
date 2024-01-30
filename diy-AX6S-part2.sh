@@ -10,6 +10,11 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# rust依赖
+git clone https://github.com/coolsnowwolf/packages.git ppackages
+cp -r ppackages/lang/rust feeds/packages/lang/rust
+rm -rf ppackages
+
 # 替换luci-app-ttyd相关
 rm -rf feeds/luci/applications/luci-app-ttyd
 git clone https://github.com/openwrt/luci.git luci-repo
