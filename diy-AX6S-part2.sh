@@ -10,11 +10,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# rust依赖
-git clone https://github.com/coolsnowwolf/packages.git ppackages
-cp -r ppackages/lang/rust feeds/packages/lang/rust
-rm -rf ppackages
-
 # 替换luci-app-ttyd相关
 rm -rf feeds/luci/applications/luci-app-ttyd
 git clone https://github.com/openwrt/luci.git luci-repo
@@ -99,6 +94,17 @@ echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.
 
 # 去掉libopenssl-legacy依赖
 sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +zlib +libopenssl-legacy/s/ +libopenssl-legacy//' feeds/helloworld/shadowsocksr-libev/Makefile
+
+# 固定shadowsocks-rust版本以免编译失败
+wget https://codeload.github.com/fw876/helloworld/zip/28504024db649b7542347771704abc33c3b1ddc8 -O helloworld.zip
+unzip helloworld.zip
+rm -rf feeds/packages/net/shadowsocks-rust
+cp -r helloworld-28504024db649b7542347771704abc33c3b1ddc8/shadowsocks-rust feeds/packages/net
+rm -rf feeds/helloworld/shadowsocks-rust
+cp -r helloworld-28504024db649b7542347771704abc33c3b1ddc8/shadowsocks-rust feeds/helloworld
+rm -rf feeds/PWpackages/shadowsocks-rust
+cp -r helloworld-28504024db649b7542347771704abc33c3b1ddc8/shadowsocks-rust feeds/PWpackages
+rm -rf helloworld.zip helloworld-28504024db649b7542347771704abc33c3b1ddc8
 
 # 替换默认IP
 sed -i 's#192.168.1.1#192.168.0.1#g' package/base-files/files/bin/config_generate
