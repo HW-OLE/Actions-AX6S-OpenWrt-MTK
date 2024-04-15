@@ -101,6 +101,9 @@ echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall-packages.
 ./scripts/feeds update PWpackages
 ./scripts/feeds install -a -f -p PWpackages
 
+# 去掉helloworld里的chinadns-ng
+rm -rf feeds/packages/net/chinadns-ng
+
 # 去掉libopenssl-legacy依赖
 sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +zlib +libopenssl-legacy/s/ +libopenssl-legacy//' feeds/helloworld/shadowsocksr-libev/Makefile
 
