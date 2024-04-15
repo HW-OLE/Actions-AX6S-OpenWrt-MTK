@@ -35,10 +35,6 @@ cp -r coolsnowwolf-luci/applications/{luci-app-zerotier,luci-app-frpc} feeds/luc
 rm -rf feeds/packages/net/{zerotier,frp,kcptun}
 cp -r coolsnowwolf-packages/net/{zerotier,frp,kcptun} feeds/packages/net
 
-# 添加 Golang 软件包
-#rm -rf feeds/packages/lang/golang
-#cp -r coolsnowwolf-packages/lang/golang feeds/packages/lang/golang
-
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
