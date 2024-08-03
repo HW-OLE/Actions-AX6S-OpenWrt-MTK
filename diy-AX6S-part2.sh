@@ -75,10 +75,14 @@ sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +z
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 cp -r helloworld/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
 
-# 替换 naiveproxy
+# 替换 naiveproxy、xray-core、xray-plugin
 git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
 rm -rf feeds/packages/net/naiveproxy
 cp -r openwrt_helloworld/naiveproxy feeds/packages/net
+rm -rf feeds/packages/net/xray-plugin
+cp -r openwrt_helloworld/xray-plugin feeds/packages/net
+rm -rf feeds/packages/net/xray-core
+cp -r openwrt_helloworld/xray-core feeds/packages/net
 rm -rf openwrt_helloworld
 
 # 删除克隆的 helloworld 仓库
