@@ -73,6 +73,10 @@ cp -r helloworld/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
 git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
 rm -rf feeds/packages/net/naiveproxy
 cp -r openwrt_helloworld/naiveproxy feeds/packages/net
+rm -rf feeds/packages/net/xray-plugin
+cp -r openwrt_helloworld/xray-plugin feeds/packages/net
+rm -rf feeds/packages/net/xray-core
+cp -r openwrt_helloworld/xray-core feeds/packages/net
 rm -rf openwrt_helloworld
 
 # 删除克隆的 helloworld 仓库
