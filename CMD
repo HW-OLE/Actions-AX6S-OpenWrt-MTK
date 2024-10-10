@@ -1,4 +1,4 @@
-git clone -b mt7622 --single-branch https://github.com/padavanonly/immortalwrtARM openwrt
+git clone -b master --single-branch --filter=blob:none https://github.com/immortalwrt/immortalwrt openwrt
 cd openwrt
 
 ./scripts/feeds update -a
