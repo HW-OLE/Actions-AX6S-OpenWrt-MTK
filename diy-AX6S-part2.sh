@@ -43,7 +43,7 @@ cp -r coolsnowwolf-packages/net/{zerotier,frp,kcptun} feeds/packages/net
 
 # 修改golang源码以编译xray1.8.8+版本
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 sed -i '/-linkmode external \\/d' feeds/packages/lang/golang/golang-package.mk
 
 # 修改frp版本为官网最新v0.60.0 https://github.com/fatedier/frp
