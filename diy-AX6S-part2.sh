@@ -83,6 +83,7 @@ rm -rf feeds/packages/net/xray-plugin
 cp -r openwrt_helloworld/xray-plugin feeds/packages/net
 rm -rf feeds/packages/net/xray-core
 cp -r openwrt_helloworld/xray-core feeds/packages/net
+cp -r openwrt_helloworld/shadowsocks-libev feeds/packages/net
 rm -rf openwrt_helloworld
 
 # 删除克隆的 helloworld 仓库
