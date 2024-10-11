@@ -75,7 +75,7 @@ sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +z
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 cp -r helloworld/luci-app-ssr-plus feeds/luci/applications/luci-app-ssr-plus
 
-# 替换 naiveproxy、xray-core、xray-plugin
+# 替换 naiveproxy、xray-core、xray-plugin、shadowsocks-libev
 git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
 rm -rf feeds/packages/net/naiveproxy
 cp -r openwrt_helloworld/naiveproxy feeds/packages/net
@@ -108,9 +108,6 @@ cp -r feeds/PWpackages/chinadns-ng feeds/packages/net/chinadns-ng
 
 # 去掉libopenssl-legacy依赖
 sed -i '/DEPENDS:=+libev +libsodium +libopenssl +libpthread +libpcre +libudns +zlib +libopenssl-legacy/s/ +libopenssl-legacy//' feeds/helloworld/shadowsocksr-libev/Makefile
-
-# 去掉shadowsocks-libev-ss-local、shadowsocks-libev-ss-redir 和 shadowsocks-libev-ss-server依赖
-sed -i '/shadowsocks-libev-ss-\(local\|redir\|server\)/d' package/feeds/helloworld/luci-app-ssr-plus/Makefile
 
 # 固定shadowsocks-rust版本以免编译失败
 wget https://codeload.github.com/fw876/helloworld/zip/28504024db649b7542347771704abc33c3b1ddc8 -O helloworld.zip
