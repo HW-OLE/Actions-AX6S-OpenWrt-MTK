@@ -38,17 +38,6 @@ sed -i 's/PKG_HASH:=ff2a4f04e7732bc77730304e48f97fdd062be2b142ae34c518ab9b9d7a3b
 rm -rf coolsnowwolf-luci
 rm -rf coolsnowwolf-packages
 
-# 替换 naiveproxy、xray-core、xray-plugin、shadowsocks-libev
-git clone -b v5 https://github.com/sbwml/openwrt_helloworld.git
-rm -rf feeds/packages/net/naiveproxy
-cp -r openwrt_helloworld/naiveproxy feeds/packages/net
-rm -rf feeds/packages/net/xray-plugin
-cp -r openwrt_helloworld/xray-plugin feeds/packages/net
-rm -rf feeds/packages/net/xray-core
-cp -r openwrt_helloworld/xray-core feeds/packages/net
-cp -r openwrt_helloworld/shadowsocks-libev feeds/packages/net
-rm -rf openwrt_helloworld
-
 # 添加luci-app-openclash
 wget https://codeload.github.com/vernesong/OpenClash/zip/refs/heads/master -O OpenClash.zip
 unzip OpenClash.zip
