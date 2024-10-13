@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build Redmi-mtk-AX6S-BaseFactory OpenWrt
+name: Build Redmi-MTK-AX6S-BaseFactory OpenWrt
 
 on:
   repository_dispatch:
