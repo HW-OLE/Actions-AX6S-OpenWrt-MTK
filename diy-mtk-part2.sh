@@ -13,6 +13,13 @@
 # 替换默认IP
 sed -i 's#192.168.1.1#192.168.0.1#g' package/base-files/files/bin/config_generate
 
+# 替换bind
+rm -rf feeds/packages/net/bind
+wget https://github.com/coolsnowwolf/packages/archive/057aca5ae5c63e9fe545b07045ed24624bbad950.zip -O OldPackages.zip
+unzip OldPackages.zip
+cp -r packages-057aca5ae5c63e9fe545b07045ed24624bbad950/net/bind feeds/packages/net/
+rm -rf OldPackages.zip packages-057aca5ae5c63e9fe545b07045ed24624bbad950
+
 # 移除 openwrt feeds 自带的番茄核心包
 rm -rf feeds/packages/net/xray-core
 rm -rf feeds/packages/net/v2ray-geodata
